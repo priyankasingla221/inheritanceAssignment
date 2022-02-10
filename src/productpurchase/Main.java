@@ -8,7 +8,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		Scanner sc = new Scanner(System.in);
-		Payment payment = new Payment(null, 0, 0);
+		Payment payment = new Payment(null, 0, 0,null);
 
 		System.out.println("Apple watch : 529$" + "\n" + "Apple Airpod : 209$ " + "\n" + "Apple ipad : 1000$");
 		System.out.println("Please Enter amount for Product:");
@@ -24,15 +24,30 @@ public class Main {
 
 			if(payment.validateCard(payment.cardNumber, payment.pinNumber)){
 				if (userSelection.equals("Debit") || userSelection.equals("debit")) {
-					DebitPayment debitpayment = new DebitPayment(payment.cardNumber, payment.pinNumber, payment.amount);
+					DebitPayment debitpayment = new DebitPayment(payment.cardNumber, payment.pinNumber, payment.amount,payment.recieptEntry);
 					debitpayment.purchaseByDebit();
-				} else if (userSelection.equals("Visa") || userSelection.equals("visa")) {
-					CreditPayment creditpayment = new CreditPayment(payment.cardNumber, payment.pinNumber,payment.amount);
+					debitpayment.calculatebalance();
+					System.out.println("Would you like Reciept for your Debit Purchase?");
+					debitpayment.recieptEntry = sc.next();
+					debitpayment.recieptRequested(debitpayment.recieptEntry);
+					debitpayment.printDebitReciept();
+				} else if (userSelection.equals("Visa")|| userSelection.equals("visa")) {
+					CreditPayment creditpayment = new CreditPayment(payment.cardNumber, payment.pinNumber, payment.amount, payment.recieptEntry);
 					creditpayment.purchaseByCredit();
-				} else {
+					creditpayment.calculatelimit();
+					System.out.println("Would you like Reciept for your Credit Purchase?");
+					creditpayment.recieptEntry = sc.next();
+					creditpayment.recieptRequested(creditpayment.recieptEntry);
+					creditpayment.printCreditReciept();
+				}
+				else {
 					System.out.println("Invalid payment method selected");
 				}
-
+				
+				//System.out.println("Would you like reciept?");
+				//payment.recieptEntry = sc.next();
+				//payment.recieptRequested(payment.recieptEntry);
+				
 			}
 
 		} else {
