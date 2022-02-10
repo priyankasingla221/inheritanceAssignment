@@ -31,11 +31,11 @@ public class Payment {
 	String recieptRequested(String userEntry) {
 		recieptEntry = userEntry;
 		if (recieptEntry.equals("yes")) {
-			System.out.println("Here it is. Have a Good Day!");
+			System.out.println("Here is your Paper Reciept. Have a Good Day!");
 			return "";
 		}
 		else {
-			System.out.println("Thank you for Shopping");
+			System.out.println("Thank you for Shopping. Its your Electronic Reciept" );
 			return "";
 			
 		}
