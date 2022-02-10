@@ -27,7 +27,7 @@ public class Main {
 					DebitPayment debitpayment = new DebitPayment(payment.cardNumber, payment.pinNumber, payment.amount,payment.recieptEntry);
 					debitpayment.purchaseByDebit();
 					debitpayment.calculatebalance();
-					System.out.println("Would you like Reciept for your Debit Purchase?");
+					System.out.println("Would you like Paper Reciept for your Debit Purchase?");
 					debitpayment.recieptEntry = sc.next();
 					debitpayment.recieptRequested(debitpayment.recieptEntry);
 					debitpayment.printDebitReciept();
@@ -35,7 +35,7 @@ public class Main {
 					CreditPayment creditpayment = new CreditPayment(payment.cardNumber, payment.pinNumber, payment.amount, payment.recieptEntry);
 					creditpayment.purchaseByCredit();
 					creditpayment.calculatelimit();
-					System.out.println("Would you like Reciept for your Credit Purchase?");
+					System.out.println("Would you like Paper Reciept for your Credit Purchase?");
 					creditpayment.recieptEntry = sc.next();
 					creditpayment.recieptRequested(creditpayment.recieptEntry);
 					creditpayment.printCreditReciept();
